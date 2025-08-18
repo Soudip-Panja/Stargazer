@@ -62,13 +62,22 @@ async function creeateMovie(newMovie) {
 
 // 1) Finding particular simgle movie by its title
 async function readMovieByTitle(movieTitle) {
-    try {
-        const movie = await Movie.findOne({title: movieTitle})
-        console.log(movie)
-    }
-    catch (error) {
-        throw error
-    }
+  try {
+    const movie = await Movie.findOne({ title: movieTitle });
+    console.log(movie);
+  } catch (error) {
+    throw error;
+  }
 }
-readMovieByTitle("Dilwale Dulhania Le Jayenge")
+// readMovieByTitle("Dilwale Dulhania Le Jayenge")
 
+// 2) Get all the movies from database
+async function readAllMovies() {
+  try {
+    const allMovies = await Movie.find();
+    console.log(allMovies);
+  } catch (error) {
+    throw error;
+  }
+}
+readAllMovies();
