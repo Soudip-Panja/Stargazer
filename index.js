@@ -58,4 +58,17 @@ async function creeateMovie(newMovie) {
     throw error;
   }
 }
-creeateMovie(newMovie);
+// creeateMovie(newMovie);
+
+// 1) Finding particular simgle movie by its title
+async function readMovieByTitle(movieTitle) {
+    try {
+        const movie = await Movie.findOne({title: movieTitle})
+        console.log(movie)
+    }
+    catch (error) {
+        throw error
+    }
+}
+readMovieByTitle("Dilwale Dulhania Le Jayenge")
+
