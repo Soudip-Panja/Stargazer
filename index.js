@@ -80,4 +80,16 @@ async function readAllMovies() {
     throw error;
   }
 }
-readAllMovies();
+// readAllMovies();
+
+// 3) Get all movies by a particular director name
+async function readMovieByDirecotr(directorName) {
+    try{
+        const movie = await Movie.find({director: directorName})
+        console.log(movie)
+    }
+    catch (error) {
+        throw error
+    }
+}
+readMovieByDirecotr("Rajkumar Hirani")
