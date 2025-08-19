@@ -2,6 +2,7 @@ const { initializeDatabase } = require("./db/db.connect");
 
 const fs = require("fs");
 const Movie = require("./models/movies.models");
+const { error } = require("console");
 
 initializeDatabase();
 
@@ -129,4 +130,16 @@ async function deleteMovie(movieId) {
     console.log("Error in Deleting Movie", error)
   }
 }
-deleteMovie("68a45bcb222e945bfc32d9cb")
+// deleteMovie("68a45bcb222e945bfc32d9cb")
+
+// 7) Delete by title
+async function deleteMovieByTitle(movieTitle) {
+  try{
+    const deletedMovie = await Movie.findOneAndDelete({title: movieTitle})
+    console.log("This movie was deleted:",deletedMovie)
+  }
+  catch (error) {
+    console.log("Error in movie deletion:", error)
+  }
+}
+deleteMovieByTitle("New Movie 2")
