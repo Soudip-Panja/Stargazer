@@ -35,7 +35,7 @@ async function seedData() {
 // seedData();
 
 const newMovie = {
-  title: "New Movie",
+  title: "New Movie 3",
   releaseYear: 2023,
   genre: ["Drama"],
   director: "Aditya Roy Chopra",
@@ -117,4 +117,16 @@ async function updateMovieDetails(movieTitle, dataToUpdate) {
     console.log("Error in changing data:", error)
   }
 }
-updateMovieDetails("Kabhi Khushi Kabhie Gham", {releaseYear: 2001})
+// updateMovieDetails("Kabhi Khushi Kabhie Gham", {releaseYear: 2001})
+
+// 6) Find a movie by id and delete from the database
+async function deleteMovie(movieId) {
+  try{
+    const deletedMovie = await Movie.findByIdAndDelete(movieId)
+    console.log("Deleted Movie:", deletedMovie)
+  }
+  catch (error) {
+    console.log("Error in Deleting Movie", error)
+  }
+}
+deleteMovie("68a45bcb222e945bfc32d9cb")
