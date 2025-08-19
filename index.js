@@ -92,4 +92,29 @@ async function readMovieByDirecotr(directorName) {
         throw error
     }
 }
-readMovieByDirecotr("Rajkumar Hirani")
+// readMovieByDirecotr("Rajkumar Hirani")
+
+// 4) Find movie by its id and update its rating
+async function updateMovie(movieId, dataToUpdate) {
+  try{
+    const updatedMovie = await Movie.findByIdAndUpdate(movieId, dataToUpdate, {new: true})
+    console.log(updatedMovie)
+  }
+  catch (error) {
+    console.log("Error in updating Movie rating:", error)
+  }
+}
+// updateMovie("68a3239e5ad37411319add6b", {rating: 8.0})
+
+// 5) Find one data and update its value (By this method we can fine movie with any other value isted of id.)
+
+async function updateMovieDetails(movieTitle, dataToUpdate) {
+  try{
+    const updatedMovie = await Movie.findOneAndUpdate({ title: movieTitle}, dataToUpdate, {new: true})
+    console.log(updatedMovie)
+  }
+  catch (error) {
+    console.log("Error in changing data:", error)
+  }
+}
+updateMovieDetails("Kabhi Khushi Kabhie Gham", {releaseYear: 2001})
